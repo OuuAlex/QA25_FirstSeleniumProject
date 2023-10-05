@@ -10,7 +10,7 @@ public class HomePageTests extends TestBase{
     public void isHomeComponentPresentTest(){
        // driver.findElement(By.xpath("//div[@id='nivo-slider']"));
        // System.out.println("Home Component is" + isElementPresent(By.xpath("//div[@id='nivo-slider']")));
-        Assert.assertTrue(isElementPresent2(By.xpath("//div[@id='nivo-slider']")));
+        Assert.assertTrue(app.getHomePage().isElementPresent2(By.xpath("//div[@id='nivo-slider']")));
     }
 
 }

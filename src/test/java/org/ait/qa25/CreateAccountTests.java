@@ -1,5 +1,6 @@
 package org.ait.qa25;
 
+import org.ait.firstSeleniumProject.models.User;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -8,34 +9,25 @@ import org.testng.annotations.Test;
 public class CreateAccountTests extends TestBase {
     @BeforeMethod
     public void ensurePrecondition(){
-        if (!isElementPresent(By.xpath("//a[contains(text(),'Log in')]"))){
-            driver.findElement(By.xpath("//a[contains(text(),'Log out')]")).click();
+        if (app.getUser().isLoginLinkPresent()){
+            app.getUser().clickOnLongOutButton();
         }
-        driver.findElement(By.xpath("//a[contains(text(),'Log in')]")).click();
+        app.getUser().clickOnLogInButton();
     }
+
     @Test
-    public void newUserRegistrationPositiveTest(){
-        driver.findElement(By.xpath("//input[@class='button-1 register-button']")).click();
-        driver.findElement(By.xpath("//input[@id='gender-female']")).click();
-        driver.findElement(By.xpath("//input[@id='FirstName']")).click();
-        driver.findElement(By.xpath("//input[@id='FirstName']")).clear();
-        driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys("Alex");
-        driver.findElement(By.xpath("//input[@id='LastName']")).click();
-        driver.findElement(By.xpath("//input[@id='LastName']")).clear();
-        driver.findElement(By.xpath("//input[@id='LastName']")).sendKeys("Ouu");
-        driver.findElement(By.xpath("//input[@id='Email']")).click();
-        driver.findElement(By.xpath("//input[@id='Email']")).clear();
-        driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("alexouu@gmail.com");
-        driver.findElement(By.xpath("//input[@id='Password']")).click();
-        driver.findElement(By.xpath("//input[@id='Password']")).clear();
-        driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("Alex.ouu123");
-        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).click();
-        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).clear();
-        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).sendKeys("Alex.ouu123");
-        driver.findElement(By.xpath("//input[@id='register-button']")).click();
-        Assert.assertTrue(isElementPresent2(By.xpath("//a[contains(text(),'Log out')]")));
+    public void existedUserRegistrationNegativeTest(){
+        app.getUser().click(By.xpath("//input[@class='button-1 register-button']"));
+        app.getUser().fillLoginRegistrationForm(new User().setEmail("alexouu@gmail.com")
+                .setPassword("Alex.ouu123")
+                .setFirstName("Alex")
+                .setSecondName("Ouu"));
+        app.getUser().clickOnRegistrationButton();
+        Assert.assertTrue(app.getUser().isElementPresent2(By.xpath("//li[contains(text(),'The specified email already exists')]")));
+
 
     }
+
     //
     //input[@class='button-1 register-button']
     //input[@id='gender-female']
