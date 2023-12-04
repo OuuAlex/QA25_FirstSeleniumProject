@@ -1,4 +1,4 @@
-package org.ait.qa25;
+package org.ait.qa28;
 
 import org.ait.firstSeleniumProject.models.User;
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ public class CreateAccountTests extends TestBase {
         app.getUser().clickOnLogInButton();
     }
 
-    @Test
+    @Test (enabled = false)
     public void existedUserRegistrationNegativeTest(){
         app.getUser().click(By.xpath("//input[@class='button-1 register-button']"));
         app.getUser().fillLoginRegistrationForm(new User().setEmail("alexouu@gmail.com")

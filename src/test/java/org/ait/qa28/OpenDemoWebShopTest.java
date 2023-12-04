@@ -1,4 +1,4 @@
-package org.ait.qa25;
+package org.ait.qa28;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

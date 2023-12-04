@@ -1,4 +1,4 @@
-package org.ait.qa25;
+package org.ait.qa28;
 
 import org.ait.firstSeleniumProject.models.User;
 import org.testng.Assert;
