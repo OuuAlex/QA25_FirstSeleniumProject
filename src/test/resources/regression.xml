@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression" verbose="1" >
+
+    <test name="Regression" >
+        <classes>
+            <class name="org.ait.qa28.CreateAccountTests" />
+            <class name="org.ait.qa28.LoginTests" />
+            <class name="org.ait.qa28.AddProductTests" />
+            <class name="org.ait.qa28.RemoveProductTests" />
+        </classes>
+    </test>
+
+</suite>
